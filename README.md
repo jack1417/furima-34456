@@ -15,8 +15,8 @@
 
 ### association
 
-- has_many :products dependent: :destroy
-- has_many :orders dependent: :destroy
+- has_many :products 
+- has_many :orders
 
 
 ## productテーブル
@@ -31,7 +31,7 @@
 | shipping_days      | integer        | null; false                    |
 | prefecture_id      | integer        | null: false                    |
 | category_id        | integer        | null: false                    |
-| user               | reference      | null: false, foreign_key: true |
+| user               | references     | null: false, foreign_key: true |
 
 ### association
 - belongs_to :user 
@@ -42,31 +42,26 @@
 
 | Colum         | Type               | Options                          |
 | ------------- | ------------------ | -------------------------------- |
-| buyer_user    | reference          | null: false, foreign_key: true   |
-| product       | reference          | null: false, foreign_key: true   |
+| user          | references         | null: false, foreign_key: true   |
+| product       | references         | null: false, foreign_key: true   |
 
 ### association
 - belongs_to :user
 - belongs_to :product
+- has_one :destination
 
-### association
-- belongs_to :user
 
 
 ## destinationテーブル
 | Colum             | Type            | Options                        |
 | ----------------- | --------------- | ------------------------------ |
 | user_id           | integer         | null: false, foreign_key: true |
-| family_name       | string          | null: false                    |
-| first_name        | string          | null: false                    |
-| family_name_kana  | string          | null: false                    |
-| first_name_kana   | string          | null: false                    |
 | post_code         | string          | null: false                    |
-| prefecture        | string          | null: false                    |
+| prefecture_id     | string          | null: false                    |
 | city              | string          | null: false                    |
 | address           | string          | null: false                    |
 | building_name     | string          |                                |
-| phone_number      | string          |                                |
+| phone_number      | string          | null: false                    |
 
 
-- belongs_to :user
+- belongs_to :order
