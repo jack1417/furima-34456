@@ -2,22 +2,21 @@
 
 ## usersテーブル
 
-| Colum              | Type           | Options        |
-| ------------------ || ------------- | -------------- |
-| nickname           | string         | null: false    |
-| email              | string         | null: false    |
-| encrypted_password | string         | null: false    |
-| family_name        | string         | null: false    |
-| first_name         | string         | null: false    |
-| family_name_kana   | string         | null: false    |
-| first_name_kana    | string         | null: false    |
-| birth_day          | string         | null: false    |
+| Colum              | Type           | Options                  |
+| ------------------ || ------------- | ------------------------ |
+| nickname           | string         | null: false              |
+| email              | string         | null: false, unique:true |
+| encrypted_password | string         | null: false              |
+| family_name        | string         | null: false              |
+| first_name         | string         | null: false              |
+| family_name_kana   | string         | null: false              |
+| first_name_kana    | string         | null: false              |
+| birth_day          | date           | null: false              |
 
 ### association
 
 - has_many :products dependent: :destroy
-- belongs_to :destination dependent: :destroy
-- belongs_to :card dependent: :destroy
+- has_many :orders dependent: :destroy
 
 
 ## productテーブル
@@ -25,27 +24,30 @@
 | Colum              | Type           | Options                        |
 | ------------------ | -------------- | ------------------------------ |
 | name               | string         | null: false                    |
-| image              | string         | null: false                    |
 | price              | string         | null: false                    |
 | description        | string         | null: false                    |
-| status             | string         | null: false                    |
-| shipping_cost      | string         | null: false                    |
-| shipping_days      | string         | null; false                    |
-| prefecture_id      | integer        | null: false, foreign_key: true |
-| category_id        | integer        | null: false, foreign_key: true |
-| user_id            | integer        | null: false, foreign_key: true |
+| status_id          | integer        | null: false                    |
+| shipping_cost_id   | integer        | null: false                    |
+| shipping_days      | integer        | null; false                    |
+| prefecture_id      | integer        | null: false                    |
+| category_id        | integer        | null: false                    |
+| user               | reference      | null: false, foreign_key: true |
 
 ### association
 - belongs_to :user 
+- belongs_to :oder
 
 
-## cardテーブル
+### ordersテーブル
 
-| Colum             | Type            | Options                        |
-| ----------------- | --------------- | ------------------------------ |
-| user_id           | integer         | null: false, foreign_key: true |
-| customer_id       | string          | null: false                    |
-| card_id           | string          | null* false                    |
+| Colum         | Type               | Options                          |
+| ------------- | ------------------ | -------------------------------- |
+| buyer_user    | reference          | null: false, foreign_key: true   |
+| product       | reference          | null: false, foreign_key: true   |
+
+### association
+- belongs_to :user
+- belongs_to :product
 
 ### association
 - belongs_to :user
