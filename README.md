@@ -19,7 +19,7 @@
 - has_many :orders
 
 
-## productテーブル
+## productsテーブル
 
 | Colum              | Type           | Options                        |
 | ------------------ | -------------- | ------------------------------ |
@@ -52,7 +52,7 @@
 
 
 
-## destinationテーブル
+## destinationsテーブル
 | Colum             | Type            | Options                        |
 | ----------------- | --------------- | ------------------------------ |
 | user_id           | integer         | null: false, foreign_key: true |
