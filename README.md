@@ -24,18 +24,18 @@
 | Colum              | Type           | Options                        |
 | ------------------ | -------------- | ------------------------------ |
 | name               | string         | null: false                    |
-| price              | string         | null: false                    |
-| description        | string         | null: false                    |
+| price              | integer        | null: false                    |
+| description        | text           | null: false                    |
 | status_id          | integer        | null: false                    |
 | shipping_cost_id   | integer        | null: false                    |
-| shipping_days      | integer        | null; false                    |
+| shipping_day_id    | integer        | null; false                    |
 | prefecture_id      | integer        | null: false                    |
 | category_id        | integer        | null: false                    |
 | user               | references     | null: false, foreign_key: true |
 
 ### association
 - belongs_to :user 
-- belongs_to :oder
+- has_one :oder
 
 
 ### ordersテーブル
@@ -55,9 +55,9 @@
 ## destinationsテーブル
 | Colum             | Type            | Options                        |
 | ----------------- | --------------- | ------------------------------ |
-| user_id           | integer         | null: false, foreign_key: true |
+| order_id          | integer         | null: false, foreign_key: true |
 | post_code         | string          | null: false                    |
-| prefecture_id     | string          | null: false                    |
+| prefecture_id     | integer          | null: false                    |
 | city              | string          | null: false                    |
 | address           | string          | null: false                    |
 | building_name     | string          |                                |
