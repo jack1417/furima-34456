@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   before_action :basic_auth
   before_action :authenticate_user!, except: [:index] 
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :move_to_index, except: [:index]
 
 
   private
@@ -19,6 +20,12 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:family_name_kana])
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name_kana])
     devise_parameter_sanitizer.permit(:sign_up, keys: [:birth_day])
+  end
+
+  def move_to_index
+    unless user_signed_in?
+      redirect_to action: :index
+    end
   end
 
 end
