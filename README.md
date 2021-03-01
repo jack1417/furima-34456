@@ -19,7 +19,7 @@
 - has_many :orders
 
 
-## productsテーブル
+## itemsテーブル
 
 | Colum              | Type           | Options                        |
 | ------------------ | -------------- | ------------------------------ |
@@ -35,7 +35,7 @@
 
 ### association
 - belongs_to :user 
-- has_one :oder
+- has_one :order
 
 
 ### ordersテーブル
