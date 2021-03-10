@@ -1,6 +1,6 @@
 class OrderDestination 
   include ActiveModel::Model
-  attr_accessor :user_id,:item_id,:order_id,:post_code,:prefecture_id,:city,:address,:building_name,:phone_number,:token
+  attr_accessor :user_id,:item_id,:post_code,:prefecture_id,:city,:address,:building_name,:phone_number,:token
 
   with_options presence: true do
     validates :user_id
